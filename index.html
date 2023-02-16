@@ -1,0 +1,43 @@
+<?php
+	// if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+ //    	// handle GET request
+	// 	if(isset($_GET['u'])){
+	// 		$data = $_GET['u'];
+	// 		//3p?%243p=e_et&%24
+	// 		//print($data);
+	// 		Header("Location: {$data}");
+	// 	}
+	// 	//print_r($_GET);
+	// }
+?>
+
+<script type="text/javascript">
+	function isValidHttpUrl(string) {
+	  let url;
+	  try {
+	    url = new URL(string);
+	  } catch (_) {
+	    return false;
+	  }
+	  return url.protocol === "http:" || url.protocol === "https:";
+	}
+
+	let url = window.location.href;
+	//console.log(url);
+	if(url.includes("?u=")){
+		let opt = url.split("?u=");
+		let openRed = opt[1];
+		if(openRed != null){
+			//console.log(openRed);
+			if(isValidHttpUrl(openRed)){
+				window.location.href = openRed;
+			}else{
+				window.location.href = opt[0];
+			}
+			
+		}
+	}else{
+		//window.location.href = url;
+	}
+	
+</script>
